@@ -1,5 +1,5 @@
 # premature optimisation is the root of all evil
-import time
+
 from flask import Flask,request,abort,redirect,url_for,jsonify,send_file,render_template,make_response
 import requests,json
 
@@ -14,21 +14,17 @@ def greet():
 
 @app.route('/authors/')
 def authors():
-	#s=time.time()
 	au=requests.get('https://jsonplaceholder.typicode.com/users')
 	req=json.loads(au.text)
 	authResp={}
 	for i in req:
 		id=i['id']
 		name=i['name']
-		#print type(id),type(name)
 		authResp[id]=name
-	#return jsonify(authResp)
 	newdictkeys=authResp.keys()
 	postResp={}
 	for i in newdictkeys:
 		postResp.setdefault(i,[])
-	#return jsonify(authResp,postResp)
 	po=requests.get('https://jsonplaceholder.typicode.com/posts')
 	req=json.loads(po.text)
 	for i in req:
@@ -37,10 +33,8 @@ def authors():
 		postIds=postResp[userid]
 		if postIds==None:
 			continue
-		#print postIds,postResp[userid] ###place matters
 		postIds.append(postid)
-		#print postIds,postResp[userid]
-		postResp[userid]=postIds #array property must be noted
+		postResp[userid]=postIds
 	iter=0
 	for i in newdictkeys:
 		postCheck=postResp[i]
@@ -48,22 +42,11 @@ def authors():
 		postCount=len(postCheck)
 		postResp[i]=postCount
 		iter+=1
-		'''iterid=str(newdictkeys[iter])
-		postCheck=i[iterid]
-		postCheck=list(set(postCheck))
-		postCount=len(postCheck)
-		i[iterid]=postCount
-		iter+=1'''
-		#print i
-	#return jsonify(authResp,postResp)
 	resp={}
 	for i in newdictkeys:
 		respKey=authResp[i]
 		respValue=postResp[i]
 		resp[respKey]=respValue
-	#t=time.time()
-	#print t-s
-	####return jsonify(resp)
 	return render_template('authPost.html',res=resp,authors=resp.keys())
 
 
@@ -79,7 +62,7 @@ def setcookie():
 def getcookie():
 	name=request.cookies.get('name')
 	age=request.cookies.get('age')
-	if (name or age) == None: #operator precedence
+	if (name or age) == None: 
 		print type(name)
 		print type(age)
 		return 'cookies missing'
