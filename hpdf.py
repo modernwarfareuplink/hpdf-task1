@@ -38,7 +38,6 @@ def authors():
 		postIds=postResp[userid]
 		if postIds==None:
 			continue
-		#print postIds,postResp[userid] ###place matters
 		postIds.append(postid)
 		#print postIds,postResp[userid]
 		postResp[userid]=postIds #array property must be noted
@@ -105,9 +104,12 @@ def input():
 		return render_template('input.html')
 	elif request.method=='POST':
 		log=request.form['log']
-		if log=='':
+		if log.strip()=='':
 			return render_template('input.html')
 		print log
+		filelog=open('log.txt','a')
+		filelog.write(log+'\n');
+		filelog.close()
 		return render_template('logged.html',log=log)
 
 		
