@@ -26,8 +26,6 @@ These instructions will get you a copy of the project up and running on your loc
 8. Keep this command prompt running and use browser and view your app
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running the tests
 
 Please do manual testing by using the URL, kind of 
@@ -43,7 +41,7 @@ Please change to 'debug=False' in app.run() || In hpdf.py at last line
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING](https://github.com/modernwarfareuplink/hpdf-task1/blob/master/CONTRIBUTING)
 
 ## Versioning
 
@@ -53,11 +51,9 @@ Most probably the only version, expect no version change
 
 * **Arun T V S** - *Initial work* - [Instagram](https://www.instagram.com/adrenaline_rushes_me/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
-This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
